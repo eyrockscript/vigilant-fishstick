@@ -1,0 +1,22 @@
+service: lambda-ts
+frameworkVersion: '3'
+# org: eyrockscript
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs18.x
+  endpointType: REGIONAL
+
+functions:
+  hello:
+    handler: handlers/handler.hello
+    events:
+      - http:
+          path: /api/hello
+          method: get
+          cors: true
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
